@@ -7,6 +7,7 @@ import { timeToString, getDailyReminderValue } from "../utils/helpers";
 import { addEntry } from "../actions";
 import { removeEntry } from "../utils/api";
 import TextButton from "./TextButton";
+
 class EntryDetail extends Component {
   static navigationOptions = ({ navigation }) => {
     const { entryId } = navigation.state.params;
@@ -30,7 +31,7 @@ class EntryDetail extends Component {
   render() {
     const { metrics } = this.props;
     return (
-      <View>
+      <View style={styles.container}>
         <MetricCard metrics={metrics} />
         <TextButton onPress={this.reset} style={{ margin: 20 }}>
           RESET

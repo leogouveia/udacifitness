@@ -24,7 +24,6 @@ class History extends Component {
     const { dispatch } = this.props;
     fetchCalendarResults()
       .then(entries => {
-        console.log(entries);
         return dispatch(receiveEntries(entries));
       })
       .then(({ entries }) => {

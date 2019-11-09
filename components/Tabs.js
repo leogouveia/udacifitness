@@ -8,6 +8,7 @@ import History from "./History";
 import AddEntry from "./AddEntry";
 
 import { purple, white, gray } from "../utils/colors";
+import Live from "./Live";
 
 const Tabs = createBottomTabNavigator(
   {
@@ -28,17 +29,26 @@ const Tabs = createBottomTabNavigator(
           <FontAwesome name="plus-square" size={30} color={tintColor} />
         )
       })
+    },
+    Live: {
+      screen: Live,
+      navigationOptions: ({ navigation }) => ({
+        title: "Live",
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons name="ios-compass" size={30} color={tintColor} />
+        )
+      })
     }
   },
   {
     initialRouteName: "History",
     defaultNavigationOptions: {
       tabBarOptions: {
-        activeTintColor: Platform.OS === "ios" ? purple : white,
+        activeTintColor: purple,
         inactiveTintColor: gray,
         style: {
           height: 56,
-          backgroundColor: Platform.OS === "ios" ? white : purple,
+          backgroundColor: white,
           shadowColor: "rgba(0,0,0.24)",
           shadowOffset: {
             width: 0,

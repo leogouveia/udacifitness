@@ -1,7 +1,7 @@
 import React from "react";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { View, Text, StyleSheet, StatusBar, Platform } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import Constants from "expo-constants";
@@ -13,7 +13,10 @@ import EntryDetail from "./components/EntryDetail";
 const AppNavigator = createAppContainer(
   createStackNavigator({
     Home: {
-      screen: Tabs
+      screen: Tabs,
+      navigationOptions: {
+        headerShown: false
+      }
     },
     EntryDetail: {
       screen: EntryDetail,
@@ -21,7 +24,13 @@ const AppNavigator = createAppContainer(
         headerTintColor: white,
         headerStyle: {
           backgroundColor: purple
-        }
+        },
+        headerTitleStyle: {
+          ...Platform.select({
+            android: { fontFamily: "Roboto" }
+          })
+        },
+        headerForceInset: { top: "never", bottom: "never" }
       }
     }
   })
